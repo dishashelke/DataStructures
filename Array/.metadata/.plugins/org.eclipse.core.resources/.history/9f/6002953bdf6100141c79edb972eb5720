@@ -1,0 +1,47 @@
+
+public class MyStack {
+
+	/**
+	 * @param args
+	 */
+	private int stack[];
+	private int top;
+	
+	public MyStack() {
+		// TODO Auto-generated constructor stub
+		stack = new int[50];
+		top = 0;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyStack stack = new MyStack();
+		stack.push(23);
+		stack.push(2300);
+		stack.push(10);
+		stack.push(300);		
+		stack.print();
+		System.out.println("top :"+stack.top());
+		stack.pop();stack.pop();
+		stack.print();
+		System.out.println("top :"+stack.top());
+	}
+	public void push(int element)
+	{
+		stack[++top] = element;			
+	}
+	public int pop()
+	{
+		return stack[--top];		
+	}
+	public int top()
+	{
+		return stack[top];
+	}
+	public void print()
+	{
+		System.out.println("Stack : ");
+		for(int i = 1; i <= top ; i++)
+			System.out.print(stack[i]+" ");
+		System.out.println();
+	}
+}

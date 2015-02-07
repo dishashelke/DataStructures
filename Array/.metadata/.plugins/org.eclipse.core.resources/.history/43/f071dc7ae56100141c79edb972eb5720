@@ -1,0 +1,88 @@
+ 
+public class MyStack {
+
+	/**
+	 * @param args
+	 */
+	private int stack[];
+	private int top;
+	
+	public MyStack() {
+		// TODO Auto-generated constructor stub
+		stack = new int[5];
+		top = 0;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyStack stack = new MyStack();
+		stack.push(23);
+		stack.push(2300);
+		stack.push(10);
+		stack.push(300);		
+		stack.print();
+		System.out.println("top :"+stack.top());
+		stack.pop();stack.pop();
+		stack.print();
+		System.out.println("top :"+stack.top());
+		
+		MyStack empty_stack = new MyStack();
+		System.out.println(empty_stack.isEmpty());
+		
+		MyStack full_stack = new MyStack();
+		//System.out.println(stack.length);
+		for(int i=0;i<5;i++)
+		{
+			System.out.println(i);
+			full_stack.push(2223);
+			System.out.println(i);
+		}
+		System.out.println(full_stack.isFull());
+		/*System.out.println("PARANTHESIS: ");
+		MyStack para_stack = new MyStack();
+		String exp = "()";
+		para_stack.checkPara(exp);*/
+	}
+	public void push(int element)
+	{
+		stack[++top] = element;			
+	}
+	public int pop()
+	{
+		return stack[--top];		
+	}
+	public int top()
+	{
+		return stack[top];
+	}
+	public boolean isEmpty()
+	{
+		//CHECK
+		return (top == 0)? true:false;		
+	}
+	public boolean isFull()
+	{
+		return (top == (stack.length+1))? true:false;
+	}
+	public void print()
+	{
+		System.out.println("Stack : ");
+		for(int i = 1; i <= top ; i++)
+			System.out.print(stack[i]+" ");
+		System.out.println();
+	}
+	/*public void checkPara(String exp)
+	{
+		for(int i=0; i < exp.length(); i++)
+		{
+			if(exp.charAt(i) == '(')
+				stack.push('(');
+			else if (exp.charAt(i) == ')')
+				if(stack.pop() != '(')
+					break;
+		}
+		if(stack.length == 0)
+			System.out.println(" correct parenthesis");
+		else
+			System.out.println("incorrect parenthesis");
+	}*/
+}

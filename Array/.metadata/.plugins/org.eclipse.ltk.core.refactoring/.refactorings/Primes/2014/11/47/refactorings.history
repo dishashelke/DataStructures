@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;rem&apos; in &apos;Large.large()&apos; to &apos;mod&apos;&#x0D;&#x0A;- Original project: &apos;Primes&apos;&#x0D;&#x0A;- Original element: &apos;Large.large().rem&apos;&#x0D;&#x0A;- Renamed element: &apos;rem&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;rem&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{Large.java[Large~large@rem!86!106!90!92!I" name="mod" references="true" stamp="1416267802649" version="1.0"/>
+</session>
