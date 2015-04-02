@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+
+public class Solution {
+
+	public static void main(String[] args) {
+	int t;//#test cases
+	int m;
+    int k;
+    Scanner scanner = new Scanner(System.in);
+    t = scanner.nextLine();
+    m = scanner.nextInt();
+    k = scanner.nextInt();
+    
+    String collection[][];
+	}
+}

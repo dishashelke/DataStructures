@@ -1,0 +1,13 @@
+
+public class HeapSort {
+
+	public static void main(String[] args) {
+		int array[] = {20, 30, 10, 18, 15, 12, 9};
+		buildMaxHeap(array);
+		for(int i =  array.length; i > -1 ; i--){
+			swap(array)
+			
+		}
+	}
+
+}

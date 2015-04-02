@@ -1,0 +1,17 @@
+package RabinKarp;
+
+public class RabinKarp {
+	
+	private int hash(String string, int length)
+	{
+		int hash = 0;
+		for(Character each: string)
+			hash += each;
+		return hash;
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}

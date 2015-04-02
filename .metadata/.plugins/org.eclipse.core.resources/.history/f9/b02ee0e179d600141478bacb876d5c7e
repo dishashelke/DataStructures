@@ -1,0 +1,8 @@
+package balancedPartition;
+
+public class BalancedPartition {
+	public static void main(String[] args) {
+
+	}
+
+}

@@ -1,0 +1,46 @@
+import java.awt.print.Printable;
+
+
+public class Heap {
+
+	public final void swap(int[] array, int src, int dest)
+	{
+		int temp = array[src];
+		array[src] = array[dest];
+		array[dest] = temp; 
+	}
+	public int left(int i){
+		return 2*i+1;
+	}
+	public int right(int i){
+		return 2*i+2;
+	}
+	public void maxHeapify(int array[], int i){
+		int left = left(i);
+		int right = right(i);
+		int largest = i;// largest store the index of largest element amongst the parent and its 2 children
+		if((left < array.length) && (array[left] > array[largest]))
+			largest = left;
+		if((right < array.length) && (array[right] > array[largest]))
+			largest = right;
+		if(largest != i){
+			swap(array, i, largest);
+			maxHeapify(array, largest);
+		}
+	}
+	public void buildMaxHeap(int array[]){
+		for(int i = (array.length/2); i > -1 ; i--){
+			maxHeapify(array, i);
+		}
+	}
+	public  void printArray(int[] array)
+	{
+		for(Integer element: array)
+			System.out.print(element+" ");
+	}
+	public static void main(String[] args) {
+		int array[] = {20, 30, 10, 18, 15, 12, 9};
+		printArray(buildMaxHeap(array));
+	}
+
+}

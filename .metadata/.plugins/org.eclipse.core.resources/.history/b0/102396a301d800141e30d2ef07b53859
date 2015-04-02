@@ -1,0 +1,25 @@
+package RabinKarp;
+
+public class RabinKarp {
+	
+	private int hash(String string)
+	{
+		int hash = 0;
+		for(int i = 0; i < string.length(); i++)
+			hash += string.charAt(i);
+		return hash;
+	}
+	private int rolledHash(char newChar, char oldChar,int oldHash)
+	{
+		return (oldHash -  oldChar + newChar);
+	}
+	public int substring(String text, String pattern){
+		int hPattern = hash(pattern);
+		int hText = hash(text);
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}

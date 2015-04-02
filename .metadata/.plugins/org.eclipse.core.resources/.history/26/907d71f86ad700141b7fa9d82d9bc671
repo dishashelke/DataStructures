@@ -1,0 +1,50 @@
+/*
+ * Goal: Partition array into two subsets S1 & S2 
+ * 		  minimize | sum(S1) - sum(S2) |
+ * Solution: let P(i, j) = { 1	  if some subset of {A1..Ai} has a sum of j
+ * 	1<= i <=n			  { 0   otherwise
+ * 	0 <= j <= nk
+ * 
+ *		P(i, j) = max{P(i-1, j), P(i-1, j-Ai)} 
+ *
+ *		Let S = (sum(Ai)) / 2
+ */
+package balancedPartition;
+
+public class BalancedPartition {
+
+	public static int sum(int array[]){
+		int sum = 0;
+		for(Integer each: array)
+			sum += each;
+		return sum;
+	}
+
+	public static void main(String[] args) {
+		int array[] = {3, 1, 1, 2, 2};
+		int size = array.length;
+		/*in Java8
+		 * int sum = IntStream.of(a).sum();
+		 */
+		int sum = sum(array);
+		boolean P[][] = new boolean[sum/2+1][ size+1];
+		
+		for(int i = 0; i < size+1; i++)
+			P[0][i] = true;
+		
+		for(int i = 1; i <= sum/2 ; i++)
+			for(int j = 1;  j<= size; j++)
+				if(array[j-1] <= i)
+					P[i][j] = P[i][j-1] || P[i-array[j-1]][j-1];
+				else
+					P[i][j] = P[i][j-1];
+		
+		//minimize sum
+		int minSum = sum/2;
+		for(int i = 1; i <= size; i++)
+			if(P[sum/2][i] == true && (minSum-array[i]) > 0)
+				minSum -= array[i];
+		System.out.println(minSum);
+	}
+
+}
