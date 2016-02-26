@@ -16,8 +16,7 @@ public class MyString {
 		System.out.println("Uppercase : "+ uc(string));
 		System.out.println("palindrome : "+pali(string));
 		System.out.println("After deleting vowels : "+delvow(string));
-		System.out.print("\nCompressed String : "+compress("aaabbbbcccccd"));
-		System.out.println("\nIs Anagram :"+ isAnagram("asd","dsa"));
+		System.out.print("\nCompressed String : "+compress("aaabbbbcccccd"));		
 		System.out.print("\nWord count: "+wordCount("d g	jhjk 	"));
 	}
 
@@ -27,6 +26,14 @@ public class MyString {
 		for(int i = string.length()-1; i >= 0 ; i--)
 			reverse = reverse + string.charAt(i);
 		return reverse;
+		
+		/*Using StringBuilder
+		 * StringBuilder reverse = new StringBuilder();
+		 * for(int i=0; i<string.length(); i++) {
+		 * 	reverse.insert(0, string.charAt[i]);
+		 * }
+		 * return reverse.toString();		 
+		 */
 	}
 	//public static revrec(String string)
 	public static int occurance(String string, char ch)
@@ -36,6 +43,7 @@ public class MyString {
 				return i;
 		return -1;
 	}
+	
 	public static String uc(String string)
 	{
 		String uc = "";
@@ -83,17 +91,7 @@ public class MyString {
 		newString += prev + ((counter > 1)?Integer.toString(counter):"");
 		return newString;
 	}
-	public static Boolean isAnagram(String string1, String string2)//wrong
-	{
-		int result = 0;
-		for(int i =0; i < string1.length(); i++)
-			if(string1.charAt(i) != ' ')
-				result += Character.toUpperCase(string1.charAt(i));
-		for(int i =0; i < string2.length(); i++)
-			if(string2.charAt(i) != ' ')
-				result -= Character.toUpperCase(string2.charAt(i));									
-		return (result == 0 ? true : false); 
-	}
+
 	public static int wordCount(String string){
 		int count = 0;
 		Boolean word = false;

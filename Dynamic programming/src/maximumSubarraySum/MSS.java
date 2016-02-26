@@ -7,9 +7,9 @@ public class MSS {
 	public static int maxSubSum(int[] array) {
 		int max_ending_here, max_so_far;
 		max_ending_here = max_so_far = array[0];
-		for(int i = 1; i<array.length; i++) {
-			max_ending_here = (max_ending_here > array[i]) ? (max_ending_here + array[i]) : array[i];
-			max_so_far = (max_so_far > max_ending_here) ? max_so_far : max_ending_here; 
+		for(int i = 1; i<array.length; i++) {			
+			max_ending_here = Math.max(array[i], max_ending_here+array[i]);
+			max_so_far = Math.max(max_ending_here, max_so_far);
 		}
 		return max_so_far;
 	}

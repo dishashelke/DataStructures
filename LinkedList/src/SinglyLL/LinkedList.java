@@ -40,6 +40,43 @@ public class LinkedList<T> {
 		for(current = head; current.getNext().getNext() != null; current=current.getNext());
 		current.setNext(null);
 	}
+	
+	public void iterativeReverse() {
+		Node<T> current = head;
+		Node<T> previous = null;
+		Node<T> next;
+		while(current != null) {
+			next = current.getNext();
+			current.setNext(previous);
+			previous = current;
+			current = next;			
+		}
+		head = previous;
+	}
+	
+	/*Algorithm:
+	 * Base case: Reached at tail node=> make tailnode as head
+	 * Recurssive step: get the next node
+	 * reverse the sublist starting from next node
+	 * make the current node as single node(make next of current null)//else infinite list
+	 * append current node to the revered list.
+	 */
+	public void recursiveReverse() {
+		if(head == null)
+			return;
+		recursiveReverse(head);
+	}
+	public void  recursiveReverse(Node<T> current) {
+		if(current.getNext() == null){//base case=> reached at tail
+			head = current;
+			return;
+		}
+		Node<T> next = current.getNext();		
+		recursiveReverse(next);
+		next.setNext(current);
+		current.setNext(null);//important
+	}
+	
 	public void printList()
 	{
 		System.out.print("[LinkedList]:");
@@ -48,6 +85,30 @@ public class LinkedList<T> {
 			System.out.print(current.getData()+" ");
 		}
 		System.out.println();		
+	}
+	
+	public void recursivePrint() {
+		System.out.print("RecursivePrint:");
+		recursivePrint(head);
+		System.out.println();
+	}
+	private void recursivePrint(Node<T> current) {
+		if(current == null)//base condition
+			return;
+		System.out.print(current.getData()+", ");
+		recursivePrint(current.getNext());
+	}
+	
+	public void recursiveReversePrint() {
+		System.out.print("Recursive Reverse Print: ");
+		recursiveReversePrint(head);
+		System.out.println();
+	}
+	private  void recursiveReversePrint(Node<T> current) {
+		if(current == null)//base condition
+			return;
+		recursiveReversePrint(current.getNext());
+		System.out.print(current.getData()+", ");
 	}
 	
 	public static void main(String[] args) {
@@ -64,6 +125,19 @@ public class LinkedList<T> {
 		myList.deleteLast();
 		myList.printList();
 		*/
+		
+		//reverse list
+		myList.iterativeReverse();
+		myList.recursivePrint();
+		LinkedList<Integer> emptyList = new LinkedList<Integer>();
+		emptyList.iterativeReverse();
+		emptyList.printList();
+		
+		myList.recursiveReverse();
+		myList.printList();
+		
+		//print reverse list
+		myList.recursiveReversePrint();
 	}
 
 }

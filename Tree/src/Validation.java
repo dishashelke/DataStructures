@@ -6,7 +6,15 @@ public class Validation {
 	/*
 	 * Given a preorder traversal determine is it is a valid BST
 	 * Ex. preorder:1,2,4,3,5 is a valid BST
-	 *      preorder: 1,3,4,2 is not a valid BST 
+	 * 		1
+	 * 			2
+	 * 				4
+	 * 			3		4
+	 *      preorder: 1,3,4,2 is not a valid BST
+	 *      		1
+	 *      			3
+	 *      				4
+	 *      			2 
 	 */
 	public static boolean isValidPreorder(int[] treeOrder){
 		int lowerbound = 0;//assume the tree contains positive integer nodes

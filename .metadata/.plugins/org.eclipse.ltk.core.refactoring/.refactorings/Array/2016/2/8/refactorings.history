@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;first&apos; in &apos;SortedArray.boundryIndex(...)&apos; to &apos;searchFirst&apos;&#x0D;&#x0A;- Original project: &apos;Array&apos;&#x0D;&#x0A;- Original element: &apos;SortedArray.boundryIndex(int[], int, boolean).first&apos;&#x0D;&#x0A;- Renamed element: &apos;first&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;first&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{SortedArray.java[SortedArray~boundryIndex~\[I~I~Z@first!160!172!168!172!Z" name="searchFirst" references="true" stamp="1455983265304" version="1.0"/>
+</session>

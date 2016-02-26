@@ -18,18 +18,14 @@ public class Sort {
 					swap(array, pos, pos+1);					
 		return array;
 	}
-	public static int[] insertion(int[] array)
-	{
-		for(int key = 1; key < (array.length); key++)
-		{
-			for(int i=key-1, j = key; i>-1; i--)				
-				if(array[j] < array[i])
-				{
-					swap(array, i, j);
-					j = i;
-				}
-				else 
-					break;			
+
+	public static int[] insertion(int []array){
+		for(int i=1; i<array.length; i++){
+			int j = i;
+			while(j > 0 && array[j] < array[j-1]){
+				swap(array, j, j-1);
+				j--;
+			}
 		}
 		return array;
 	}
@@ -135,8 +131,8 @@ public class Sort {
 		System.out.print("\nBubble: ");
 		printArray(bubble(array));
 		
-		/*System.out.print("\nInsertion sort: ");
-		printArray(insertion(array));*/
+		System.out.print("\nInsertion sort: ");
+		printArray(insertion(array));
 		
 		/*System.out.print("\nMerge Sort:");
 		printArray(mergeSort(array));*/

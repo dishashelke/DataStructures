@@ -1,0 +1,123 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+//import lis.LIS;
+import stack.MyStack;
+import queue.MyQueue;
+
+public class Graph {
+
+	int[][] graph;
+	int vertices;
+	Graph()
+	{
+		this.graph =new int[][]{
+				{0,1,1,1,0,0,0}, 
+				{1,0,0,0,1,1,0},
+				{1,0,0,0,0,0,1},
+				{1,0,0,0,0,1,0},
+				{0,1,0,0,0,0,0},
+				{0,1,0,1,0,0,0}, 
+				{0,0,1,0,0,0,0}};
+		//this.graph =new int[][]{{0,1,1,1,1,1,1}, {1,0,1,1,1,1,1}, {1,1,0,1,1,1,1}, {1,1,1,0,1,1,1}, {1,1,1,1,0,1,1},{1,1,1,1,1,0,1}, {1,1,1,1,1,1,0}};
+		this.vertices = graph[0].length;
+	}
+	public ArrayList<Integer> connectedTo(int index)
+	{
+		ArrayList<Integer>  neighbours = new ArrayList<Integer>();
+		for(int i = 0 ; i < graph[index].length; i++)		
+		{			
+			if(graph[index][i] > 0)		
+				neighbours.add(i);
+		}
+		return neighbours;
+	}
+	public ArrayList<Integer> iterativeDFS()
+	{
+		boolean[] visited = new boolean[vertices];
+		int vertex;
+		ArrayList<Integer> order = new ArrayList<Integer>();
+		MyStack<Integer> stack = new MyStack<Integer>(vertices*vertices);
+		stack.push(0);
+		while (!stack.isEmpty())
+		{
+			vertex = stack.pop();			
+			if (!visited[vertex])
+			{
+				visited[vertex] = true;
+				order.add(vertex);//System.out.print(vertex+" ");				
+				ArrayList<Integer> neighbour = connectedTo(vertex);
+				for(int i=neighbour.size()-1; i > -1; i--)
+					stack.push(neighbour.get(i));
+			}
+		}
+		return order;
+	}
+	public void recursiveDFS()
+	{
+		boolean[] visited = new boolean[vertices];
+		this.dfs(visited,0);
+	}
+	public void dfs(boolean[] visited, int vertex)
+	{
+		visited[vertex] = true;
+		System.out.print(vertex +", ");
+		for(Integer neighbour: connectedTo(vertex))
+			if(!visited[neighbour])
+				dfs(visited,neighbour);
+		/*ArrayList<Integer> neighbours = this.connectedTo(vertex);
+		for(int i = 0; i<neighbours.size(); i++)
+			if(!visited[neighbours.get(neighbour)])
+				dfs(visited,neighbours.get(neighbour));*/		
+	}
+	public ArrayList<Integer> bfs()
+	{
+		ArrayList<Integer> order = new ArrayList<Integer>();
+		MyQueue<Integer> queue = new MyQueue<Integer>();
+		Set<Integer> set = new HashSet<Integer>();
+		queue.enqueue(0);
+		set.add(0);
+		order.add(0);
+		while(!queue.isEmpty())
+		{
+			int vertex = queue.dequeue();
+			for(Integer neighbour: connectedTo(vertex))
+				if(!set.contains(neighbour))
+				{
+					set.add(neighbour);
+					queue.enqueue(neighbour);
+					order.add(neighbour);
+				}
+		}
+		return order;
+	}
+	
+	//recursive BFS???
+	
+	//BFS  using visited boolean array instead of using set
+	public ArrayList<Integer> bfs1()
+	{
+		boolean[] visited = new boolean[vertices];
+		ArrayList<Integer> order = new ArrayList<Integer>();
+		MyQueue<Integer> queue = new MyQueue<Integer>();
+		queue.enqueue(0);
+		while(!queue.isEmpty()) {
+			int vertex = queue.dequeue();
+			if(!visited[vertex]) {
+				visited[vertex] = true;
+				order.add(vertex);
+				for(Integer neighbour: connectedTo(vertex))
+					queue.enqueue(neighbour);
+			}
+		}
+		return order;
+	}
+	public static void main(String[] args) {
+		Graph newGraph = new Graph();
+		System.out.print("Iterative DFS:"+newGraph.iterativeDFS());
+		System.out.print("\nRecursive DFS:");newGraph.recursiveDFS();
+		System.out.print("\nBFS: "+newGraph.bfs());		
+		System.out.print("\nBFS by using other approach: "+newGraph.bfs1());
+		//System.out.print(newGraph.connectedTo(6));
+	}
+}

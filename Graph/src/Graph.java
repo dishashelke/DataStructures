@@ -46,7 +46,7 @@ public class Graph {
 			{
 				visited[vertex] = true;
 				order.add(vertex);//System.out.print(vertex+" ");				
-				ArrayList<Integer> neighbour = this.connectedTo(vertex);
+				ArrayList<Integer> neighbour = connectedTo(vertex);
 				for(int i=neighbour.size()-1; i > -1; i--)
 					stack.push(neighbour.get(i));
 			}
@@ -92,8 +92,6 @@ public class Graph {
 		return order;
 	}
 	
-	//recursive BFS???
-	
 	//BFS  using visited boolean array instead of using set
 	public ArrayList<Integer> bfs1()
 	{
@@ -114,8 +112,8 @@ public class Graph {
 	}
 	public static void main(String[] args) {
 		Graph newGraph = new Graph();
-		System.out.print(newGraph.iterativeDFS());
-		newGraph.recursiveDFS();
+		System.out.print("Iterative DFS:"+newGraph.iterativeDFS());
+		System.out.print("\nRecursive DFS:");newGraph.recursiveDFS();
 		System.out.print("\nBFS: "+newGraph.bfs());		
 		System.out.print("\nBFS by using other approach: "+newGraph.bfs1());
 		//System.out.print(newGraph.connectedTo(6));

@@ -45,40 +45,7 @@ public class MyStack<T> {
 			System.out.print(stack[i]+" ");
 		System.out.println();
 	}
-	public void checkPara(String exp)
-	{
-		int i;
-		for(i=0; i < exp.length(); i++)
-		{	
-			char c = exp.charAt(i);
-			if((c == '(') || (c == '{') || (c == '['))
-			{				
-				push((T)new Character(c));
-			}
-			else{
-				if(!isEmpty())
-				{
-					char popped = ((Character)pop()).charValue();
-					if(('(' != popped && c == ')') || ('{' != popped && c == '}') || ('[' != popped && c == ']'))
-					{
-						System.out.println("incorrect parenthesis");
-						return;
-					}
-				}
-				else {
-					System.out.println("incorrect parenthesis");
-					return;
-				}
-			}	
-		}
-		
-		if(isEmpty())
-			System.out.println("correct parenthesis");
-		else
-		{
-			System.out.println("incorrect parenthesis");
-		}
-	}
+
 	public int prefix(String exp)
 	{
 		//MyStack<Integer> operands = new MyStack<Integer>(2);
@@ -141,7 +108,6 @@ public class MyStack<T> {
 		return (Integer)getTop();
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub		
 		/*MyStack stack = new MyStack(5);
 		stack.push(23);
 		stack.push(2300);
@@ -169,11 +135,6 @@ public class MyStack<T> {
 		}
 		System.out.println(full_stack.isFull());
 		*/
-		
-		/*System.out.println("PARANTHESIS: ");
-		MyStack<Character> para_stack = new MyStack<Character>(40);
-		String exp = "{[()}";
-		para_stack.checkPara(exp);*/
 		
 		/*System.out.println("PREFIX:");
 		MyStack<String> prefix_stack = new MyStack<String>(20);

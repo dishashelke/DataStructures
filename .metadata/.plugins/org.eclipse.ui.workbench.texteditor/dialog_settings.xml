@@ -13,14 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="ngs" key="selection"/>
+		<item value="" key="selection"/>
 		<list key="findhistory">
+			<item value="isleaf"/>
+			<item value="inorder"/>
+			<item value="height"/>
+			<item value="ttt"/>
+			<item value="class"/>
+			<item value="LCA"/>
 			<item value="ngs"/>
 			<item value="print"/>
-			<item value="addNeighbour"/>
-			<item value="connectedTo"/>
-			<item value="swap"/>
-			<item value="inser"/>
 		</list>
 		<list key="replacehistory">
 		</list>

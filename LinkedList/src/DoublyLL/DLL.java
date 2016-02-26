@@ -32,7 +32,7 @@ public class DLL<T> {
 			head = newNode;
 	}
 	public T deleteFirst()
-	{
+	{//heandle this case: if list has only 1 element
 		Node<T> node = head;
 		head = head.getNext();
 		if(!isEmpty())

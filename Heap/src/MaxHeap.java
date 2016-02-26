@@ -43,6 +43,30 @@ public class MaxHeap {
 			maxHeapify(array, 0, i);// last element is max so reduce array size by 1
 		}
 	}
+	//////////////////////////////////////////////
+	/*
+	 * valid heap: 10,			   10
+	 * 								8				6
+	 */
+	public static int parent(int i) {
+		return (i - 1)/2;
+	}
+	public static boolean isMaxHeap(int []heap) {
+		if(heap.length == 0)
+			return true;
+		return isMaxHeap(heap, 0);
+	}
+	public static boolean isMaxHeap(int []heap, int currentIndex) {
+		int parentIndex = parent(currentIndex);
+		int leftIndex = left(currentIndex);
+		int rightIndex = right(currentIndex);
+		if(parentIndex < 0 || currentIndex > heap.length-1)//if root or node not in heap
+			return true;
+		if(heap[currentIndex] > heap[parentIndex])
+			return false;
+		return isMaxHeap(heap, leftIndex) && isMaxHeap(heap, rightIndex);
+	}
+	/////////////////////////////
 	public static void main(String[] args) {
 		int array[] = {20, 30, 10, 18, 15, 12, 9};
 		buildMaxHeap(array);
@@ -53,6 +77,12 @@ public class MaxHeap {
 		heapSort(array1);
 		System.out.print("\nSorted Elements: ");
 		printArray(array1);
+		
+		
+		System.out.println("\nIs max heap:"+isMaxHeap(array));
+		array[1] = -3;
+		printArray(array);
+		System.out.println("\nIs max heap:"+isMaxHeap(array));
 	}
 
 }
