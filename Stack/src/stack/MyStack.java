@@ -7,7 +7,6 @@ public class MyStack<T> {
 	private int top;
 	
 	public MyStack(int s) {
-		// TODO Auto-generated constructor stub
 		stack = (T[])new Object[s];
 		size = s;
 		top = -1;
@@ -46,67 +45,6 @@ public class MyStack<T> {
 		System.out.println();
 	}
 
-	public int prefix(String exp)
-	{
-		//MyStack<Integer> operands = new MyStack<Integer>(2);
-		int op1, op2, result;
-		int opcount = 0;
-		char operator;
-		for(int i=0; i < exp.length(); i++)
-		{
-			char c = exp.charAt(i);
-			push((T)new Character(c));
-			if(! ((c == '+') || (c == '-') || (c == '*') || (c == '/')) )
-				opcount++;
-			if(opcount == 2)
-			{
-				/*op2 = (Integer)(pop()) - 48;
-				op1 = (Integer)(pop()) - 48;*/
-				op2 = (Integer) pop();
-				op1 = (Integer)pop();
-				operator = ((Character)pop()).charValue();
-				if(operator == '+')
-					result = op1 + op2;
-				else if(operator == '-')
-					result = op1 - op2;
-				else if(operator == '*')
-					result = op1 * op2;
-				else
-					result = op1 / op2;
-				push((T)new Character((char) result));
-				opcount = 1;
-			}			
-		}
-		return (Integer)getTop();
-	}
-	public int postfix(String exp)
-	{
-		for(int i=0; i < exp.length(); i++)
-		{
-			int op1, op2;
-			char c = exp.charAt(i);			
-			if((c == '+') || (c == '-') || (c == '*') || (c == '/'))
-			{
-				System.out.println("c:"+c);
-				print();
-				op2 = (Integer)(pop());
-				op1 = (Integer)(pop());
-				if(c == '+')
-					push((T) new Integer(op1+op2));
-				else if(c == '-')
-					push((T) new Integer(op1-op2));
-				else if(c == '*')
-					push((T) new Integer(op1*op2));
-				else
-					push((T) new Integer(op1/op2));
-			}
-			else
-			{				
-				push((T)new Integer(c-48));
-			}
-		}
-		return (Integer)getTop();
-	}
 	public static void main(String[] args) {
 		/*MyStack stack = new MyStack(5);
 		stack.push(23);
@@ -134,16 +72,7 @@ public class MyStack<T> {
 			System.out.println(i);
 		}
 		System.out.println(full_stack.isFull());
-		*/
+		*/			
 		
-		/*System.out.println("PREFIX:");
-		MyStack<String> prefix_stack = new MyStack<String>(20);
-		String infix_exp = "*+93/42";
-		System.out.println("Result : "+infix_stack.prefix(infix_exp));*/
-		
-		System.out.println("POSTFIX:");
-		MyStack<Integer> postfix_stack = new MyStack<Integer>(20);
-		String postfix_exp = "93+42/11++*";//"93+42/*";
-		System.out.println("Result : "+postfix_stack.postfix(postfix_exp));		
 	}
 }

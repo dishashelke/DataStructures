@@ -33,6 +33,29 @@ public class SortedArray {
 		return 0;
 	}
 	
+	/*
+	 * Given sorted array and a number, find if sum of any two elements in array is equal to that number 
+	 */
+	public static void hasSum(int [] sortedArray, int desiredSum) {
+		boolean pairFound = false;
+		int low,hi;
+		low = 0;
+		hi = sortedArray.length - 1;
+		while(low < hi) {
+			int sum = sortedArray[low] + sortedArray[hi];
+			if(sum == desiredSum) {
+				System.out.println("Elements are:"+sortedArray[low]+", "+sortedArray[hi]);
+				pairFound = true;
+			}
+			if(sum > desiredSum)
+				hi--;
+			else
+				low++;
+		}
+		if(low==hi && !pairFound)
+		System.out.println("No such elements are present in an array have sum="+desiredSum);
+	}
+	
 	public static void main(String[] args) {
 		int []sortedArray = {1,2,2,3,3,3,4,4,5,5,5,6,7,7,7,7};
 		
@@ -44,5 +67,9 @@ public class SortedArray {
 		
 		System.out.println("total occurences of 2: "+countOccurence(sortedArray, 2));
 		System.out.println("total occurences of 5: "+countOccurence(sortedArray, 5));
+		
+		int[] sortedArray1 = {-10, -5, -4, -3, 0, 3, 7, 8, 12};
+		hasSum(sortedArray1, 8);
+		hasSum(sortedArray1, 18);
 	}
 }

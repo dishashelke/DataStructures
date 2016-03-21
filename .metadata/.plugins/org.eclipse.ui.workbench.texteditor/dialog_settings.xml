@@ -15,14 +15,14 @@
 		<item value="false" key="wholeword"/>
 		<item value="" key="selection"/>
 		<list key="findhistory">
+			<item value="height"/>
+			<item value="max"/>
+			<item value="public int postfix(String exp)"/>
+			<item value="printArray"/>
 			<item value="isleaf"/>
 			<item value="inorder"/>
-			<item value="height"/>
 			<item value="ttt"/>
 			<item value="class"/>
-			<item value="LCA"/>
-			<item value="ngs"/>
-			<item value="print"/>
 		</list>
 		<list key="replacehistory">
 		</list>

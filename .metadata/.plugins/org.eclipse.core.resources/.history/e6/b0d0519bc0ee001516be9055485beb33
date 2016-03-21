@@ -1,0 +1,38 @@
+package AVLTree;
+
+import BST.BST;
+import BST.BSTNode;
+
+public class AVLTree {
+
+	private AVLNode root;
+	
+	public AVLTree() {
+		root = null
+	}
+	public void add(int data){
+		if(root == null) {
+			root = new AVLNode(data);
+			return;
+		}
+		add(root, data);
+	}
+	private void add(BSTNode current, int data) {
+		if (current == null) {
+			current = new BSTNode(data);
+		}
+		else if(data < current.data()) {
+			add(current.left(), data);
+			int diff = Math.abs(current.left().height)
+		}
+		else {
+			add(current.right(), data);
+		}
+	}
+
+	public static void main(String[] args) {
+
+
+	}
+
+}

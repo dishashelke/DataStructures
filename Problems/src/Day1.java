@@ -4,7 +4,7 @@ import java.util.*;
 //design a data structure which can insert,update,delete and getRandom in O(1)
 /*arrayindx->elemtn->hashemle->arrayinde
 array 4,15,6,45
-hash  40,151,62, 453*/
+hash  4:0,15:1,6:2, 45:3*/
 class Magic {
   
   // Insert : 4,15,6,45,2,0,349

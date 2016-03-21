@@ -1,0 +1,13 @@
+package AVLTree;
+
+import BST.BSTNode;
+
+public class AVLNode extends BSTNode{
+
+	public AVLNode(int data) {
+		super(data);
+		height = 0;
+	}
+	private int height;
+
+}

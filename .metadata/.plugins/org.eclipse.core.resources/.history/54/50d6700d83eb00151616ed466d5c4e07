@@ -1,0 +1,20 @@
+import java.util.Map;
+import java.util.Queue;
+
+
+public class LRU {
+
+	private Queue<Integer> cache;
+	private Map<Integer, Integer> map;
+	private int size;
+	private int capacity;
+	
+	LRU(int capacity) {
+		cache = new  Queue<Integer>();
+	}
+	
+	public static void main(String[] args) {
+
+	}
+
+}

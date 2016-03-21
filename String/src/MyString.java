@@ -4,14 +4,10 @@ import java.util.Set;
 
 public class MyString {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		String string = "abcAcba";
-		System.out.println("Reversed string :"+reverse(string));
+		System.out.println("Reversed string :"+reverse("hi"));
 		System.out.println("f found at : "+ occurance(string, 'z'));
 		System.out.println("Uppercase : "+ uc(string));
 		System.out.println("palindrome : "+pali(string));
@@ -20,30 +16,23 @@ public class MyString {
 		System.out.print("\nWord count: "+wordCount("d g	jhjk 	"));
 	}
 
-	public static String reverse(String string)
-	{
-		String reverse = "";
-		for(int i = string.length()-1; i >= 0 ; i--)
-			reverse = reverse + string.charAt(i);
-		return reverse;
-		
-		/*Using StringBuilder
-		 * StringBuilder reverse = new StringBuilder();
-		 * for(int i=0; i<string.length(); i++) {
-		 * 	reverse.insert(0, string.charAt[i]);
-		 * }
-		 * return reverse.toString();		 
-		 */
+	public static String reverse(String string) {
+
+		StringBuilder reverse = new StringBuilder();
+		for (int i = 0; i < string.length(); i++) {
+			reverse.insert(0, string.charAt(i));
+		}
+		return reverse.toString();
+
 	}
 	//public static revrec(String string)
-	public static int occurance(String string, char ch)
-	{
-		for(int i = 0; i< string.length(); i++)
-			if(string.charAt(i) == ch)
+	public static int occurance(String string, char ch) {
+		for (int i = 0; i < string.length(); i++)
+			if (string.charAt(i) == ch)
 				return i;
 		return -1;
 	}
-	
+
 	public static String uc(String string)
 	{
 		String uc = "";

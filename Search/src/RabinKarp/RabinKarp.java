@@ -2,17 +2,17 @@ package RabinKarp;
 
 public class RabinKarp {
 	
-	private static int hash(String string)
-	{
+	private static int hash(String string) {
 		int hash = 0;
-		for(int i = 0; i < string.length(); i++)
+		for (int i = 0; i < string.length(); i++)
 			hash += string.charAt(i);
 		return hash;
 	}
-	private static int rolledHash(char newChar, char oldChar,int oldHash)
-	{
-		return (oldHash -  oldChar + newChar);
+
+	private static int rolledHash(char newChar, char oldChar, int oldHash) {
+		return (oldHash - oldChar + newChar);
 	}
+	
 	public static int substring(String text, String pattern){
 		int hPattern = hash(pattern);
 		int hText = hash(text.substring(0, pattern.length()));

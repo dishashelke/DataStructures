@@ -6,7 +6,7 @@
 
 public class CircularArray {
 	
-	/*Given a circular array return index of an element else -1*/
+	/*Given a circular array return index of an element*/
 	public static int search(int []array, int key) {
 		int low = 0;
 		int high = array.length-1;		

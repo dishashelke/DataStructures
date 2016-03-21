@@ -1,0 +1,30 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Queue;
+
+
+public class LRU {
+
+	private Queue<Integer> cache;
+	private Map<Integer, Integer> map;
+	private int size;
+	private int capacity;
+	
+	LRU(int capacity) {
+		cache = new LinkedList<Integer>();
+		map = new HashMap<Integer, Integer>();
+		size = 0;
+		this.capacity = capacity;
+	}
+	
+	public void add(int page){
+		if(map.containsKey(page)){
+			cache.
+		}
+	}
+	
+	public static void main(String[] args) {
+
+	}
+
+}

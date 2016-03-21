@@ -2,67 +2,66 @@ package DoublyLL;
 
 public class DLL<T> {
 	private Node<T> head;
-	public DLL()
-	{
+
+	public DLL() {
 		head = null;
 	}
-	public DLL(T data)
-	{
+
+	public DLL(T data) {
 		Node<T> newNode = new Node<T>(data);
 		head = newNode;
 	}
-	public void insertFirst(T data)
-	{
-		Node<T> newNode = new Node<T>(data,head,null);	
-		if(head != null)
+
+	public void insertFirst(T data) {
+		Node<T> newNode = new Node<T>(data, head, null);
+		if (head != null)
 			head.setPrev(newNode);
-		head = newNode;	
+		head = newNode;
 	}
-	public void insertLast(T data)
-	{
+
+	public void insertLast(T data) {
 		Node<T> newNode = new Node<T>(data);
 		Node<T> current = head;
-		if(current!=null)
-		{
-			for(;current.getNext() != null; current=current.getNext());
+		if (current != null) {
+			for (; current.getNext() != null; current = current.getNext())
+				;
 			newNode.setPrev(current);
 			current.setNext(newNode);
-		}			
-		else
+		} else
 			head = newNode;
 	}
-	public T deleteFirst()
-	{//heandle this case: if list has only 1 element
+
+	public T deleteFirst() {// heandle this case: if list has only 1 element
 		Node<T> node = head;
 		head = head.getNext();
-		if(!isEmpty())
+		if (!isEmpty())
 			head.setPrev(null);
 		return node.getData();
 	}
-	public void deleteLast()
-	{
+
+	public void deleteLast() {
 		Node<T> current = head;
-		if(current.getNext()!= null)
-		{
-			for(; current.getNext().getNext() != null; current=current.getNext());		
+		if (current.getNext() != null) {
+			for (; current.getNext().getNext() != null; current = current
+					.getNext())
+				;
 			current.setNext(null);
-		}
-		else
+		} else
 			head = null;
 	}
-	public boolean isEmpty()
-	{
-		return (head==null);
+
+	public boolean isEmpty() {
+		return (head == null);
 	}
-	public void print()
-	{
+
+	public void print() {
 		Node<T> current = head;
 		System.out.print("\n[List]: ");
-		for(; current != null; current = current.getNext())
-		{
-			System.out.print(current.getData()+" ");			
-		}		
+		for (; current != null; current = current.getNext()) {
+			System.out.print(current.getData() + " ");
+		}
 	}
+
 	public static void main(String[] args) {
 		DLL<Integer> list = new DLL<Integer>();
 		/*list.insertFirst(10);

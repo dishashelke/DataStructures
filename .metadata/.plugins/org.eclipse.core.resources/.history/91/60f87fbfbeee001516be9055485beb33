@@ -1,0 +1,22 @@
+package AVLTree;
+
+import BST.BST;
+import BST.BSTNode;
+
+public class AVLTree extends BST {
+
+	@Override
+	public void add(int data){
+		if(root == null) {
+			root = new BSTNode(data);
+			return;
+		}
+		
+	}
+
+	public static void main(String[] args) {
+
+
+	}
+
+}

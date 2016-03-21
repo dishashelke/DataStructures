@@ -1,0 +1,50 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+
+
+public class MergingIntervals {
+
+	private class Interval {
+		private int startTime;
+		private int endTime;
+
+		public Interval(int startTime, int endTime) {
+			this.startTime = startTime;
+			this.endTime = endTime;
+		}
+
+		public int startTime() {
+			return startTime;
+		}
+		
+		public String toString() {
+			return startTime+":"+endTime;
+		}
+	}
+
+	private class IntervalComparator implements Comparator<Interval> {
+
+		@Override
+		public int compare(Interval arg1, Interval arg2) {
+			return arg1.startTime() - arg2.startTime();
+		}
+	}
+	
+	public void merge() {
+		Interval []all = {new Interval(2,4),  new Interval(1,3)};		
+		Arrays.sort(all, new IntervalComparator());
+		System.out.println(Arrays.toString(all));	
+		Interval previous = all[0];
+		for(int i=1; i < all.length; i++) {
+			int currentStart = all[i].startTime();
+			if()
+		}
+	}
+	
+	public static void main(String[] args) {
+		MergingIntervals merger = new MergingIntervals();
+		merger.merge();
+	}
+
+}

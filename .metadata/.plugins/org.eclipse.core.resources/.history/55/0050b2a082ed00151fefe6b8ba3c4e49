@@ -1,0 +1,127 @@
+package BinaryTree;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Sum {
+	public int value;
+}
+
+/*
+			7
+	15          5
+9      8    9      7
+*/
+public class Operations {
+
+	/*
+	 * Given a binary tree find a path with maximum path sum. Path may start and end at any node(not necessary to start or end at leaf or root)
+	 * http://www.geeksforgeeks.org/find-maximum-path-sum-in-a-binary-tree/
+	 * For each node there can be four ways that the max path goes through the node:
+	 * 1. Node only
+	 * 2. Max path through Left Child + Node
+	 * 3. Max path through Right Child + Node
+	 * 4. Max path through Left Child + Node + Max path through Right Child
+	 */
+	public static int maxSumOfPath(BinaryTree tree) {
+		Sum maxSum = new Sum();
+		maxSum.value = Integer.MIN_VALUE;
+		BinaryNode root = tree.getRoot();
+		maxSumOfPath(root, maxSum);
+		return maxSum.value;
+	}
+	private static int maxSumOfPath(BinaryNode current, Sum maxSum) {
+		if(current == null)
+			return 0;
+		int leftSum = maxSumOfPath(current.getLeftChild(), maxSum);
+		int rightSum = maxSumOfPath(current.getRightChild(), maxSum);
+		int maxSingle = Math.max(Math.max(leftSum, rightSum) + current.getData(), current.getData());
+		int maxTop = Math.max(maxSingle, leftSum + current.getData() + rightSum);
+		maxSum.value = Math.max(maxSum.value, maxTop);
+		return maxSingle;
+	}
+	
+	//****************find sum of all left leave****************
+	public static int sumLeftLeaves(BinaryTree tree) {
+		BinaryNode root = tree.getRoot();
+		return sumLeftLeaves(root, false);
+	}
+	private static int sumLeftLeaves(BinaryNode current, boolean leftNode) {
+		if(current == null)
+			return 0;
+		if(current.isLeaf() && leftNode)
+			return current.getData();
+		return sumLeftLeaves(current.getLeftChild(), true) + sumLeftLeaves(current.getRightChild(), false);
+	}
+	
+	//****************LCA*****************
+	/*
+	 * Algorith:
+	 * traverse the tree starting from root
+	 * if any of the keys matches root => root is lca
+	 * recure for left and right subtrees
+	 * if node has one key in left subtree and other key in right subtree=> this node is lca
+	 * else if both keys lie in any one of the subtree then the lca lies in that subtree 
+	 */
+	public static BinaryNode lca(BinaryTree tree, int key1, int key2){
+		BinaryNode root = tree.getRoot();
+		return lca(root, key1, key2);
+	}
+	private static BinaryNode lca(BinaryNode current, int key1, int key2){
+		if(current == null)
+			return null;
+		int data = current.getData();
+		if(data == key1 || data == key2)
+			return current;
+		
+		BinaryNode leftLCA = lca(current.getLeftChild(), key1, key2);
+		BinaryNode rightLCA = lca(current.getRightChild(), key1, key2);
+		if(leftLCA != null && rightLCA != null)
+			return current;
+		return (leftLCA != null) ? leftLCA : rightLCA;
+	}
+	
+	//**************print path from root to all leaves******************
+	public static void printAllRootToLeafPaths(BinaryTree tree) {
+		BinaryNode root = tree.getRoot();
+        printAllRootToLeafPaths(root, new ArrayList<Integer>());
+    }
+    
+    private static void printAllRootToLeafPaths(BinaryNode current, List<Integer> path) {
+    	if(current == null) {
+    		return;
+    	}
+    	path.add(current.getData());
+        if(current.isLeaf()) {                            
+            System.out.println(path);
+            return;
+        }
+      	
+           /* printAllRootToLeafPaths(current.getLeftChild(), new ArrayList<Integer>(path));
+            printAllRootToLeafPaths(current.getRightChild(), new ArrayList<Integer>(path));*/
+		if (current.getLeftChild() != null) {
+			printAllRootToLeafPaths(current.getLeftChild(), path);
+			path.remove(path.size() - 1);
+		}
+		if (current.getRightChild() != null) {
+			printAllRootToLeafPaths(current.getRightChild(), path);
+			path.remove(path.size() - 1);
+		}
+
+	}
+
+	
+	public static void main(String args[]) {
+		BinaryTree tree = new BinaryTree();
+		tree.createTree();
+		
+		/*System.out.println("Max sum of the path:"+maxSumOfPath(tree));
+		
+		System.out.println("Sum of left leaves:"+sumLeftLeaves(tree));
+		
+		BinaryNode lca = lca(tree, 15, 8);
+		System.out.println("LCA of 15 and 8:"+ lca.getData());*/
+		
+		printAllRootToLeafPaths(tree);
+	}
+}
