@@ -25,6 +25,14 @@ public class BSTNode {
 	    this.data = data;
 	  }
 	  
+	  public void left(BSTNode left) {
+		  leftChild = left;
+	  }
+	  
+	  public void right(BSTNode right) {
+		  rightChild = right;
+	  }
+	  
 	  public void add(int data) {
 	    if(data < this.data) {//add to left subtree
 	      if(this.leftChild == null) {

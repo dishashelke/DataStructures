@@ -157,6 +157,15 @@ public class BST {
 			return current;
 		return findMinRec(current.left());
 	}
+	//**********************height of tree*********************
+	public int height() {
+		return height(root);
+	}
+	public int height(BSTNode current) {
+		if(current == null)
+			return -1;
+		return Math.max(height(current.left()), height(current.right())) + 1;
+	}
 	/*
 	 * modify tree to make it non-bst. This is used to test isbst function
 	 */
